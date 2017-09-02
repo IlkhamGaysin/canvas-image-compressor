@@ -29,7 +29,7 @@
  * Receives an Image Object (can be JPG OR PNG) and returns Object with one property
  * that contains function which accept options
  * You can call compress() on imageCompressor with options passed
- * It returns a Promise you can bind function wiich will be accept one argument
+ * It returns a Promise you can bind function which will be accept one argument
  * It will be a compressed blob
 
  * @options {sourceImgObj} sourceImgObj. The source Image Object
@@ -40,27 +40,38 @@
 window.imageCompressor = {
   compress: function(options = {}) {
     return new Promise(function(resolve, reject) {
-      var mime_type, cvs, ctx, options;
+      var mime_type, cvs, ctx;
 
-      if (options['sourceImgObj'] == undefined || !options['sourceImgObj'].length) {
-        reject("sourceImgObj mist be present");
+      if(options['sourceImgObj'] == undefined) {
+        reject('sourceImgObj mist be present');
       }
 
-      mime_type = "image/jpeg";
+      mime_type = options['outputFormat'] || 'image/jpeg';
 
-      if(typeof(options['outputFormat']) !== undefined && options['outputFormat'] == "png"){
-        mime_type = "image/png";
+      if(mime_type == 'png') {
+        mime_type = 'image/png';
       }
+
+      options['sourceImgObj'].setAttribute('crossOrigin', 'anonymous');
 
       cvs = document.createElement('canvas');
       cvs.width = options['sourceImgObj'].naturalWidth;
       cvs.height = options['sourceImgObj'].naturalHeight;
-      ctx = cvs.getContext("2d").drawImage(options['sourceImgObj'], 0, 0);
+      ctx = cvs.getContext('2d').drawImage(options['sourceImgObj'], 0, 0);
 
       cvs.toBlob(
         function(blob) {
           resolve(blob);
-          ctx.clearRect(0,0, blob.naturalWidth, blob.naturalHeight);
+          ctx.clearRect(
+            0,
+            0,
+            options['sourceImgObj'].naturalWidth,
+            options['sourceImgObj'].naturalHeight
+          );
+          cvs.remove();
+          delete mime_type;
+          delete ctx;
+          delete cvs;
         },
         mime_type,
         (options['quality'] || 100)/100
