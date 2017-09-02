@@ -21,42 +21,50 @@
  */
 
 /**
- * Create the imageCompressor object.
+ * Create the global imageCompressor object which returns Promise.
  * @constructor
  */
 
-var imageCompressor = {
-  /**
-   * Receives an Image Object (can be JPG OR PNG) and returns a new Image Object compressed
-   * @param {Image} source_img_obj The source Image Object
-   * @param {Integer} quality The output quality of Image Object
-   * @param {String} output format. Possible values are jpg and png
-   * @return {DataUrl} base64 data url
-   */
+/**
+ * Receives an Image Object (can be JPG OR PNG) and returns Object with one property
+ * that contains function which accept options
+ * You can call compress() on imageCompressor with options passed
+ * It returns a Promise you can bind function wiich will be accept one argument
+ * It will be a compressed blob
 
-  run: function(source_img_obj, quality, output_format){
-    var newImageData, mime_type, cvs, ctx;
+ * @options {sourceImgObj} sourceImgObj. The source Image Object
+ * @options {Quality} Integer. The output quality of Image Object, default 100
+ * @options {outputFormat} Output format. Possible values are jpg and png. Default jpeg
+*/
 
-    mime_type = "image/jpeg";
+window.imageCompressor = {
+  compress: function(options = {}) {
+    return new Promise(function(resolve, reject) {
+      var mime_type, cvs, ctx, options;
 
-    if(typeof output_format !== "undefined" && output_format =="png"){
-      mime_type = "image/png";
-    }
+      if (options['sourceImgObj'] == undefined || !options['sourceImgObj'].length) {
+        reject("sourceImgObj mist be present");
+      }
 
-    cvs = document.createElement('canvas');
-    cvs.width = source_img_obj.naturalWidth;
-    cvs.height = source_img_obj.naturalHeight;
-    ctx = cvs.getContext("2d").drawImage(source_img_obj, 0, 0);
-    cvs.toBlob(
-      function(blob){
-        var newImageData = blob;
-      },
-      mime_type,
-      quality/100
-    );
+      mime_type = "image/jpeg";
 
-    cvs.remove();
+      if(typeof(options['outputFormat']) !== undefined && options['outputFormat'] == "png"){
+        mime_type = "image/png";
+      }
 
-    return newImageData;
+      cvs = document.createElement('canvas');
+      cvs.width = options['sourceImgObj'].naturalWidth;
+      cvs.height = options['sourceImgObj'].naturalHeight;
+      ctx = cvs.getContext("2d").drawImage(options['sourceImgObj'], 0, 0);
+
+      cvs.toBlob(
+        function(blob) {
+          resolve(blob);
+          ctx.clearRect(0,0, blob.naturalWidth, blob.naturalHeight);
+        },
+        mime_type,
+        (options['quality'] || 100)/100
+      );
+    });
   }
-};
+}
