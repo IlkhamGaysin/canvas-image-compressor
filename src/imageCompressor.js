@@ -45,12 +45,13 @@ window.imageCompressor = {
       if(options['sourceImgObj'] == undefined) {
         reject('sourceImgObj mist be present');
       }
-      if (jQuery) {
+
+      if (options['sourceImgObj'] instanceof jQuery) {
         if (!options['sourceImgObj'].length) {
           reject('sourceImgObj mist be present');
         }
 
-        options['sourceImgObj'] = options['sourceImgObj'].get(0)
+        options['sourceImgObj'] = options['sourceImgObj'].get(0);
       }
 
       mime_type = options['outputFormat'] || 'image/jpeg';
@@ -59,12 +60,11 @@ window.imageCompressor = {
         mime_type = 'image/png';
       }
 
-      options['sourceImgObj'].setAttribute('crossOrigin', 'anonymous');
-
       cvs = document.createElement('canvas');
       cvs.width = options['sourceImgObj'].naturalWidth;
       cvs.height = options['sourceImgObj'].naturalHeight;
-      ctx = cvs.getContext('2d').drawImage(options['sourceImgObj'], 0, 0);
+      ctx = cvs.getContext('2d');
+      ctx.drawImage(options['sourceImgObj'], 0, 0);
 
       cvs.toBlob(
         function(blob) {
