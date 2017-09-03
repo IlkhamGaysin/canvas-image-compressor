@@ -18,7 +18,7 @@ Now you can get `compressor` and call on it `then()` with two arguments.
 The first is function that accpets new [Blob](https://developer.mozilla.org/en-US/docs/Web/API/Blob) and will be invoked if compressing is successfullly done.
 The second is function that accepts error message which will be invoked if compressing is not successfullly done.
 
-Be aware compressor works asynchronously and compress returns [Promise](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise).
+Be aware compressor works asynchronously and `compress` method returns [Promise](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise).
 
 ```javascript
   var sourceImg = document.getElementById("sourceImg"),
