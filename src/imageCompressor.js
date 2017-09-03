@@ -21,9 +21,8 @@
  */
 
 /**
- * Create the global imageCompressor object which returns Promise.
- * @constructor
- */
+ * Create the global imageCompressor object which consist of on property with function.
+*/
 
 /**
  * Receives an Image Object (can be JPG OR PNG) and returns Object with one property
