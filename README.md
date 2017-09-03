@@ -11,8 +11,9 @@ Include the (minified) JavaScript Canvas Image Compressor script in your HTML ma
 
 ```html
 <script src="js/imageCompressor.js"></script>
+```
 
-```Javascript
+```javascript
   // Now you can get global compressor and call on it then() with two arguments.
   // The first is function that accpets new Blob and will be invoked if compressing is successfullly done.
   // The second is function that accepts error message which will be invoked if compressing is not successfullly done.

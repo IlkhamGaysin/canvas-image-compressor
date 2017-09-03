@@ -45,6 +45,13 @@ window.imageCompressor = {
       if(options['sourceImgObj'] == undefined) {
         reject('sourceImgObj mist be present');
       }
+      if (jQuery) {
+        if (!options['sourceImgObj'].length) {
+          reject('sourceImgObj mist be present');
+        }
+
+        options['sourceImgObj'] = options['sourceImgObj'].get(0)
+      }
 
       mime_type = options['outputFormat'] || 'image/jpeg';
 
