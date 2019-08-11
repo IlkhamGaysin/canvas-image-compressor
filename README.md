@@ -8,7 +8,7 @@ It can be used to compress images by using
 
 ## Usage
 ```shell
-  npm install canvas-image-compressor
+npm install canvas-image-compressor
 ```
 
 Now you can get `compressor` and call on it `then()` with two arguments.
@@ -18,20 +18,20 @@ The second is function that accepts error message which will be invoked if compr
 Be aware compressor works asynchronously and `compress` method returns [Promise](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise).
 
 ```javascript
-  var canvasImageCompressor = require("canvas-image-compressor");
-  var sourceImg             = document.getElementById("sourceImg");
+var canvasImageCompressor = require("canvas-image-compressor");
+var sourceImg             = document.getElementById("sourceImg");
 
-  canvasImageCompressor.compress({"sourceImgObj": sourceImg}).then(function (blob) {
-      var newImg = document.createElement("img");
-      var urlCreator = window.URL || window.webkitURL;
-      var imageUrl = urlCreator.createObjectURL(blob);
+canvasImageCompressor.compress({"sourceImgObj": sourceImg}).then(function (blob) {
+    var newImg = document.createElement("img");
+    var urlCreator = window.URL || window.webkitURL;
+    var imageUrl = urlCreator.createObjectURL(blob);
 
-      newImg.src = imageUrl;
+    newImg.src = imageUrl;
 
-      document.body.appendChild(newImg);
-    },
-    function(errorMessage) {
-      alert(errorMessage);
-    }
-  );
+    document.body.appendChild(newImg);
+  },
+  function(errorMessage) {
+    alert(errorMessage);
+  }
+);
 ```
