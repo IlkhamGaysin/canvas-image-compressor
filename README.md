@@ -23,11 +23,11 @@ var sourceImg             = document.getElementById("sourceImg");
 
 canvasImageCompressor.compress({"sourceImgObj": sourceImg}).then(
   function(blob) {
-    var newImg = document.createElement("img");
+    var newImg     = document.createElement("img");
     var urlCreator = window.URL || window.webkitURL;
-    var imageUrl = urlCreator.createObjectURL(blob);
+    var imageUrl   = urlCreator.createObjectURL(blob);
 
-    newImg.src = imageUrl;
+    newImg.src     = imageUrl;
 
     document.body.appendChild(newImg);
   },
