@@ -1,0 +1,29 @@
+{
+  "name": "canvas-image-compressor",
+  "version": "1.0.0",
+  "description": "Simple image compressor that accept image sorce from Javascript FileReader. It can be used to compress images by using canvas element.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\""
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/IlkhamGaysin/canvas-image-compressor.git"
+  },
+  "keywords": [
+    "canvas",
+    "javascript",
+    "compress",
+    "image-processing",
+    "image-compressor",
+    "javascript-filereader",
+    "promises"
+  ],
+  "author": "Ilkham Gaysin <ilgamgaysin@gmail.com> (https://github.com/IlkhamGaysin)",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/IlkhamGaysin/canvas-image-compressor/issues"
+  },
+  "homepage": "https://github.com/IlkhamGaysin/canvas-image-compressor#readme",
+  "devDependencies": {}
+}
