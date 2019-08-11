@@ -21,7 +21,8 @@ Be aware compressor works asynchronously and `compress` method returns [Promise]
 var canvasImageCompressor = require("canvas-image-compressor");
 var sourceImg             = document.getElementById("sourceImg");
 
-canvasImageCompressor.compress({"sourceImgObj": sourceImg}).then(function (blob) {
+canvasImageCompressor.compress({"sourceImgObj": sourceImg}).then(
+  function(blob) {
     var newImg = document.createElement("img");
     var urlCreator = window.URL || window.webkitURL;
     var imageUrl = urlCreator.createObjectURL(blob);
