@@ -40,6 +40,7 @@ canvasImageCompressor.compress({"sourceImgObj": sourceImg}).then(
 
 ### Options that can be passed to manage output image
 
+
 **outputFormat** - a DOMString indicating the image format. The default is `image/jpeg`
 
 **quality**      - a Number between 0 and 1 indicating image quality if the requested type is image/jpeg or image/webp. If this argument is anything else, the default values 0.92 and 0.80 are used for image/jpeg and image/webp respectively. Other arguments are ignored.

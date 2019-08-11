@@ -1,6 +1,6 @@
 {
   "name": "canvas-image-compressor",
-  "version": "2.0.1",
+  "version": "2.0.2",
   "description": "Simple image compressor that accept image source from Javascript FileReader. It can be used to compress images by using canvas element.",
   "main": "index.js",
   "scripts": {
