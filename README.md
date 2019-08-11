@@ -43,7 +43,7 @@ canvasImageCompressor.compress({"sourceImgObj": sourceImg}).then(
 **outputFormat** - a DOMString indicating the image format. The default is `image/jpeg`
 
 ```javascript
-canvasImageCompressor.compress({"sourceImgObj": sourceImg, "outputFormat": 'image/png'}).then(
+canvasImageCompressor.compress({"outputFormat": "image/png", "sourceImgObj": sourceImg}).then(
   function(blob) {
     // handle success
   },
@@ -56,7 +56,7 @@ canvasImageCompressor.compress({"sourceImgObj": sourceImg, "outputFormat": 'imag
 **quality**      - a Number between 0 and 1 indicating image quality if the requested type is image/jpeg or image/webp. If this argument is anything else, the default values 0.92 and 0.80 are used for image/jpeg and image/webp respectively. Other arguments are ignored.
 
 ```javascript
-canvasImageCompressor.compress({"sourceImgObj": sourceImg, "quality": 50}).then(
+canvasImageCompressor.compress({"quality": 50, "sourceImgObj": sourceImg}).then(
   function(blob) {
     // handle success
   },
