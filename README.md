@@ -17,6 +17,7 @@ The second is function that accepts error message which will be invoked if compr
 
 Be aware compressor works asynchronously and `compress` method returns [Promise](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise).
 
+
 ```javascript
 var canvasImageCompressor = require("canvas-image-compressor");
 var sourceImg             = document.getElementById("sourceImg");
@@ -36,3 +37,8 @@ canvasImageCompressor.compress({"sourceImgObj": sourceImg}).then(
   }
 );
 ```
+
+### Options that can be passed to manage output image
+
+**outputFormat** - a DOMString indicating the image format. The default is `image/jpeg`;
+**quality**      - a Number between 0 and 1 indicating image quality if the requested type is image/jpeg or image/webp. If this argument is anything else, the default values 0.92 and 0.80 are used for image/jpeg and image/webp respectively. Other arguments are ignored.
