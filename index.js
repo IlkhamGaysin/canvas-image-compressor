@@ -1,7 +1,7 @@
 "use strict";
 
 var canvasImageCompressor = {
-  compress: function (options = {}) {
+  compress: function(options = {}) {
     return new Promise(function(resolve, reject) {
       var mime_type, cvs, ctx;
 
@@ -44,7 +44,7 @@ var canvasImageCompressor = {
         (options['quality'] || 100)/100
       );
     });
-  });
+  }
 };
 
 module.exports = canvasImageCompressor;
